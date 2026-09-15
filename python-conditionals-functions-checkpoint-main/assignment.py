@@ -919,13 +919,12 @@ ticket_type(65)
 # find_highest(100, 25, 60)
 # find_highest(8, 9, 30)
 def find_highest(a, b, c):
-    if a < b and a < c:
-        if b > c:
-            print(b, "is the highest")
-        else:
-            print(c, "is the highest")
-    else:
+    if a > b and a > c:
         print(a, "is the highest")
+    elif b > a and b > c:
+        print(b, "is the highest")
+    else:
+        print(c, "is the highest")
 find_highest(5,20,11)
 find_highest(100,25,60)
 find_highest(8,9,30)
@@ -946,13 +945,12 @@ find_highest(8,9,30)
 #
 # Test at least THREE times.
 def find_lowest(a, b, c):
-    if a > b or a > c:
-        if b > c:
-            print(c, "is the lowest")
-        else:
-            print(b, "is the lowest")
-    else:
+    if a < b and a < c:
         print(a, "is the lowest")
+    elif b < c and b < a:
+        print(b, "is the lowest")
+    else:
+        print(c, "is the lowest")
 find_lowest(5,20,11)
 find_lowest(100,25,60)
 find_lowest(8,9,30)
@@ -1091,7 +1089,11 @@ is_in_range(50, 100, 1)
 #
 # Print multiplication_result.
 
+def multiply_numbers(num1,num2):
+    return num1*num2
 
+multiplication_result = multiply_numbers(6,7) #siiiixseveeeen
+print(multiplication_result)
 
 # TASK 42:
 # Create a function named:
@@ -1114,8 +1116,13 @@ is_in_range(50, 100, 1)
 # bigger
 #
 # Print bigger.
-
-
+def larger_number(a,b):
+    if a > b:
+        return a
+    else:
+        return b
+bigger = larger_number(15,40)
+print(bigger)
 # TASK 43:
 # Create a function named:
 #
@@ -1136,7 +1143,15 @@ is_in_range(50, 100, 1)
 # highest_result
 #
 # Print highest_result.
-
+def highest_of_three(a,b,c):
+    if a > b and a > c:
+        return a
+    elif b > a and b > c: 
+        return b
+    else:
+        return c
+highest_result = highest_of_three(18,42,27)
+print(highest_result)
 
 # TASK 44:
 # Create a function named:
@@ -1152,6 +1167,16 @@ is_in_range(50, 100, 1)
 # WITHOUT using min(), RETURN the lowest value.
 #
 # Test it at least THREE times.
+def lowest_of_three(a,b,c):
+    if a < b and a < c:
+        return a
+    elif b < a and b < c:
+        return b
+    else:
+        return c
+print(lowest_of_three(2,1,4))
+print(lowest_of_three(6,7,6))
+print(lowest_of_three(3,4,5))
 
 
 # TASK 45:
@@ -1173,8 +1198,22 @@ is_in_range(50, 100, 1)
 # middle_of_three(10, 30, 20)
 # middle_of_three(50, 5, 25)
 # middle_of_three(8, 7, 9)
-
-
+def middle_of_three(a,b,c):
+    if a < b and a < c:
+        if b > c:
+            return c
+        else:
+            return b
+    elif a > b and a > c:
+        if b > c:
+            return b
+        else:
+            return c
+    else:
+        return a
+print(middle_of_three(10, 30, 20))
+print(middle_of_three(50, 5, 25))
+print(middle_of_three(8, 7, 9))
 # ============================================================
 # SECTION 9 — RETURN + REUSE
 # ============================================================
@@ -1213,7 +1252,28 @@ is_in_range(50, 100, 1)
 #
 # IMPORTANT:
 # Do NOT repeat the highest/lowest logic outside the functions.
+a = 30
+b = 10
+c = 20
+def get_highest(a,b,c):
+    if a > b and a > c:
+        return a
+    elif b > a and b > c:
+        return b
+    else:
+        return c
+highest = get_highest(a,b,c)
 
+def get_lowest(a,b,c):
+    if a < b and a < c:
+        return a
+    elif b < a and b < c:
+        return b
+    else:
+        return c
+lowest = get_lowest(a,b,c)
+difference = highest-lowest
+print(difference)
 
 # TASK 47:
 # Create:
@@ -1234,7 +1294,15 @@ is_in_range(50, 100, 1)
 #
 # or:
 # Small spread
-
+a = 9
+b = 4
+c = 15
+highest_num = get_highest(a,b,c)
+lowest_num = get_lowest(a,b,c)
+if (highest_num - lowest_num) > 10:
+    print("Large spread")
+else:
+    print("Small spread")
 
 # TASK 48:
 # Create a function named:
@@ -1261,7 +1329,17 @@ is_in_range(50, 100, 1)
 #
 # THINK:
 # How can one function call feed into another?
-
+a = 12
+b = 50
+c = 31
+def best_of_two(a,b):
+    if a > b:
+        return a
+    else:
+        return b
+larger = best_of_two(a,b)
+highest = best_of_two(larger,c)
+print(highest)
 
 # TASK 49:
 # Create a function named:
@@ -1281,7 +1359,17 @@ is_in_range(50, 100, 1)
 # lowest
 #
 # Print lowest.
-
+a = 22
+b = 5
+c = 17
+def worst_of_two(a,b):
+    if a < b:
+        return a
+    else: 
+        return b
+lower = worst_of_two(a,b)
+lowest = worst_of_two(lower,c)
+print(lowest)
 
 # ============================================================
 # SECTION 10 — LOGIC CHALLENGES
@@ -1303,8 +1391,13 @@ is_in_range(50, 100, 1)
 # b is not middle
 #
 # Do NOT calculate the middle value separately first.
-
-
+a = 12
+b = 7
+c = 19
+if (b > c and b < a) or (b < c and b > a):
+    print("b is middle")
+else:
+    print("b is not middle")
 # TASK 51:
 # Create:
 #
@@ -1319,8 +1412,25 @@ is_in_range(50, 100, 1)
 #
 # or:
 # Highest is unique
-
-
+a = 25
+b = 25
+c = 10
+if a >= b and a >= c:  #highest is a
+    if a == b or a == c:
+        print("Highest is tied")
+    else:
+        print("Highest is unique")
+elif b >= a and b >= c:  #highest is b
+    if a == b or b == c:
+        print("Highest is tied")
+    else:
+        print("Highest is unique")
+else:  #highest is c
+    if c == b or a == c:
+        print("Highest is tied")
+    else:
+        print("Highest is unique")
+    
 # TASK 52:
 # Create:
 #
@@ -1335,8 +1445,15 @@ is_in_range(50, 100, 1)
 # Neither
 #
 # Print ONE result.
-
-
+a = 3
+b = 8
+c = 5
+if a < b and b < c:
+    print("Strictly increasing")
+elif a > b and b > c:
+    print("Strictly decreasing")
+else:
+    print("Neither")
 # TASK 53:
 # Create:
 #
@@ -1357,8 +1474,13 @@ is_in_range(50, 100, 1)
 # Non-decreasing
 # OR
 # Not non-decreasing
-
-
+a = 5
+b = 5
+c = 10
+if a <= b and b <= c:
+    print("Non-decreasing")
+else:
+    print("Not non-decreasing")
 # TASK 54:
 # Create:
 #
@@ -1381,7 +1503,13 @@ is_in_range(50, 100, 1)
 # Entry denied
 #
 # Read this one carefully.
-
+age = 17
+has_permission = True
+has_ticket = False
+if age >= 18 or (age < 18 and has_permission and has_ticket):
+    print("Entry allowed")
+else:
+    print("Entry denied")
 
 # TASK 55:
 # Create:
@@ -1404,8 +1532,14 @@ is_in_range(50, 100, 1)
 # Fail
 #
 # Only ONE message should print.
-
-
+score = 88
+attendance = 92
+if score >= 90 and attendance >= 90:
+    print("Honors")
+elif score >= 70 and attendance >= 75:
+    print("Pass, the student did not qualify for Honors")
+else:
+    print("Fail")
 # ============================================================
 # SECTION 11 — DEBUGGING CHALLENGES
 # ============================================================
@@ -1423,7 +1557,10 @@ is_in_range(50, 100, 1)
 #     print("Passing")
 # if score >= 90:
 #     print("Excellent")
-
+if score >= 90:
+    print("Excellent")
+if score >= 70:
+    print("Passing")
 
 # TASK 57:
 # The programmer wants 18 to count as Adult.
@@ -1436,6 +1573,12 @@ is_in_range(50, 100, 1)
 #     print("Adult")
 # else:
 #     print("Minor")
+age = 18
+
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")
 
 
 # TASK 58:
@@ -1453,6 +1596,12 @@ is_in_range(50, 100, 1)
 # else:
 #     print("Invalid")
 
+number = 20
+
+if number >= 10 and number <= 20:
+    print("Valid")
+else:
+    print("Invalid")
 
 # TASK 59:
 # The programmer wants the function to RETURN the answer.
@@ -1466,7 +1615,12 @@ is_in_range(50, 100, 1)
 # result = add_numbers(4, 6)
 # print(result)
 
+def add_numbers(a, b):
+    total = a + b
+    return total
 
+result = add_numbers(4, 6)
+print(result)
 # TASK 60:
 # Fix the function so the variable result works outside
 # of the function.
@@ -1477,7 +1631,12 @@ is_in_range(50, 100, 1)
 # result = subtract(20, 8)
 # print(result)
 
+def subtract(a, b):
+   answer = a - b
+   return answer
 
+result = subtract(20, 8)
+print(result)
 # ============================================================
 # FINAL BOSS 1 — THREE NUMBER ANALYZER
 # ============================================================
@@ -1524,7 +1683,33 @@ is_in_range(50, 100, 1)
 # analyze_three_numbers(5, 5, 9)
 # analyze_three_numbers(-5, 0, -12)
 
-
+def analyze_three_numbers(a,b,c):
+    highest = 0
+    if a >= b and a >= c:
+        highest = a
+    elif b >= a and b >= c:
+        highest = b
+    else: 
+        highest = c
+    print("Highest:", highest)
+    lowest = 0
+    if a <= b and a <= c:
+        lowest = a
+    elif b <= a and b <= c:
+        lowest = b
+    else:
+        lowest = c
+    print("Lowest:", lowest)
+    if a == b and a == c:
+        print("All equal")
+    elif a == b or a == c or c == b:
+        print("Exactly two equal")
+    else:
+        print("All different")
+analyze_three_numbers(8, 3, 15)
+analyze_three_numbers(20, 20, 20)
+analyze_three_numbers(5, 5, 9)
+analyze_three_numbers(-5, 0, -12)
 # ============================================================
 # FINAL BOSS 2 — NUMBER RANKING
 # ============================================================
@@ -1557,6 +1742,36 @@ is_in_range(50, 100, 1)
 # - Do NOT use sorting
 #
 # Your program must still work if the order of inputs changes.
+user_num1 = int(input("Enter a number: "))
+user_num2 = int(input("Enter a second number: "))
+user_num3 = int(input("Enter a third number: "))
+if user_num1 > user_num2 and user_num1 > user_num3:
+    if user_num2 > user_num3:
+        print(user_num3)
+        print(user_num2)
+        print(user_num1)
+    else:
+        print(user_num3)
+        print(user_num1)
+        print(user_num2)
+elif user_num2 > user_num1 and user_num2 > user_num3:
+    if user_num1 > user_num3:
+        print(user_num3)
+        print(user_num1)
+        print(user_num2)
+    else:
+        print(user_num1)
+        print(user_num3)
+        print(user_num2)
+else:
+    if user_num1 > user_num2:
+        print(user_num2)
+        print(user_num1)
+        print(user_num3)
+    else:
+        print(user_num1)
+        print(user_num2)
+        print(user_num3)
 
 
 # ============================================================

@@ -2787,7 +2787,17 @@ print(calculate_damage(5, 20, True))
 #
 # THINK:
 # A 25% discount means the customer pays 75% of the price.
-
+def final_price(price, coupon):
+    if coupon == "none":
+        return price
+    elif coupon == "SAVE10":
+        return price - (price * 0.1)
+    elif coupon == "SAVE25":
+        return price - (price * 0.25)
+print(final_price(100, "none"))
+print(final_price(100, "SAVE10"))
+print(final_price(100, "SAVE25"))
+print(final_price(80, "SAVE25"))
 
 # ============================================================
 # GIT CHECK

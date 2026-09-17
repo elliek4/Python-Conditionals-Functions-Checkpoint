@@ -409,19 +409,19 @@ num2 = 30
 num3 = 20
 if num1 > num2 and num1 > num3:
     if num3 > num2:
-        print("Middle: num3")
+        print("Middle:", num3)
     else:
-        print("Middle: num2")
+        print("Middle:", num2)
 elif num2 > num3:
     if num1 > num3:
-        print("Middle: num1")
+        print("Middle:", num1)
     else:
-        print("Middle: num3")
+        print("Middle:", num3)
 else:
     if num1 > num2:
-        print("Middle: num1")
+        print("Middle:", num1)
     else:
-        print("Middle: num2")
+        print("Middle:", num2)
 # TASK 19:
 # Create:
 #
@@ -594,7 +594,13 @@ if first_number > second_number or first_number > third_number:
     else:
         print(second_number, "is the lowest")
 else:
-    print(first_number, "is the lowest")
+    if second_number >= first_number and third_number >= first_number:
+        print(first_number, "is the lowest")
+    elif second_number >= third_number:
+        print(third_number, "is the lowest")
+    else:
+        print(second_number, "is the lowest")
+        
 
 # TASK 25:
 # Ask the user for THREE whole numbers.

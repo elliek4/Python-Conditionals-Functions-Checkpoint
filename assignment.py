@@ -1698,6 +1698,14 @@ def analyze_three_numbers(a,b,c):
     else: 
         highest = c
     print("Highest:", highest)
+    middle = 0
+    if (a <= b and a >= c) or (a >= b and a <= c):
+        middle = a
+    elif (b >= a and b <= c) or (b <= a and b >= c):
+        middle = b
+    else:
+        middle = c
+    print("Middle:", middle)
     lowest = 0
     if a <= b and a <= c:
         lowest = a
